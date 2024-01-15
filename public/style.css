@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f2f2f2;
+}
+
+.menu {
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin: 10px;
+    background-color:#ccf5ff;
+    padding: 15px;
+    border-radius: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+li:hover{
+    margin: 10px;
+    background-color:#99ebff;
+    padding: 15px;
+    border-radius: 20px;
+    transform: scale(1.2);
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+}

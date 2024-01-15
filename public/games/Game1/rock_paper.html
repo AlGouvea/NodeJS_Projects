@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="rock.css">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <div class="menu">
+        <h1>Rock Paper Scissors</h1>
+        <div class="choice">
+            <h3 id="move">Choose your move:</h3>
+            <button onclick="play('rock')">🪨</button>
+            <button onclick="play('paper')">📄</button>
+            <button onclick="play('scissors')">✂️</button>
+        </div>
+        <div class="interaction">
+            <div class="game" id="game"></div>
+            <div class="result" id="result"></div>
+        </div>
+        <div class="menu_buttons">
+            <a id="reset" style="float:left;display: none;" onclick="reset()">🔄</a>
+            <a href="/">↩️</a>
+        </div>
+
+        <div class="scoreboard">
+            <div class="score" id="user" style="color:green;">👤 0</div>
+            <div class="score" id="computer" style="color: red;">🖥️ 0</div>
+        </div>
+    </div>
+
+    <script>
+        computer = 0;
+        user = 0;
+        // Function called by users choice
+        function play(userChoice) {
+            const choices = ['rock', 'paper', 'scissors'];
+            // Computer decides random Move
+            computerChoice = choices[Math.floor(Math.random() * 3)];
+
+            const result = determineWinner(userChoice, computerChoice);
+
+            winner = getWinner(result);
+
+            if(winner == 0) {
+                user += 1;
+            }else if(winner == 1) {
+                computer += 1;
+            }
+            
+            userChoice = changeIcon(userChoice);
+            computerChoice = changeIcon(computerChoice);
+
+
+            document.querySelector(".choice").style.display="none";
+            document.getElementById("move").style.display="none";
+            document.getElementById('reset').style.display = `block`;
+            
+            document.getElementById('game').innerHTML = `👤: ${userChoice} x ${computerChoice}: 🖥️`;
+            document.getElementById('result').innerHTML = `${result}`;
+
+            document.querySelector(".interaction").style.display="block";
+
+            document.getElementById("user").innerHTML = `👤 ${user}`
+            document.getElementById("computer").innerHTML = `🖥️ ${computer}`
+        }
+
+        // Function to compare choices and determine winner
+        function determineWinner(user, computer) {
+            if (user === computer) {
+                return 'It\'s a Tie!';
+            } else if ((user === 'rock' && computer === 'scissors') ||
+                       (user === 'paper' && computer === 'rock') ||
+                       (user === 'scissors' && computer === 'paper')) {
+                return 'You Win!';
+            } else {
+                return 'Computer Wins!';
+            }
+        }
+
+        //Function for better visibility of result and choices
+        function changeIcon(choice) {
+            if(choice == 'rock'){
+                choice = '🪨';
+            }else if(choice == 'scissors'){
+                choice = '✂️';
+            }else {
+                choice = '📄';
+            }
+
+            console.log(choice);
+            return choice;
+        }
+
+        //Function to Reset for another game
+        function reset() {
+            document.querySelector(".choice").style.display="block";
+            document.getElementById("move").style.display="block";
+
+            document.querySelector(".interaction").style.display="none";
+            document.getElementById('reset').style.display = 'none';
+        }
+
+        function getWinner(info) {
+            if(info == 'You Win!'){
+                document.getElementById('result').style.color = 'green';
+                return 0;
+            }else if(info == 'Computer Wins!'){
+                document.getElementById('result').style.color = 'red';
+                return 1;
+            }else {
+                document.getElementById('result').style.color = 'black';
+                return 2;
+            }
+        }
+    </script>
+</body>
+</html>
