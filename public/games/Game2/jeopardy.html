@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/games/Game2/style/jeopardy.css">
+    <title>Jeopardy Game</title>
+</head>
+<body>
+    <h1>Jeopardy Game</h1>
+
+    <div class="game-board" id="game-board">
+        <!-- Categories -->
+        <div class="category">Category 1</div>
+        <div class="category">Category 2</div>
+        <div class="category">Category 3</div>
+        <div class="category">Category 4</div>
+        <div class="category">Category 5</div>
+
+        <!-- Questions -->
+        <div class="question" onclick="showQuestion(1, 100)">$100</div>
+        <div class="question" onclick="showQuestion(2, 100)">$100</div>
+        <div class="question" onclick="showQuestion(3, 100)">$100</div>
+        <div class="question" onclick="showQuestion(4, 100)">$100</div>
+        <div class="question" onclick="showQuestion(5, 100)">$100</div>
+        
+        <div class="question" onclick="showQuestion(2, 200)">$200</div>
+        <div class="question" onclick="showQuestion(1, 200)">$200</div>
+        <div class="question" onclick="showQuestion(3, 200)">$200</div>
+        <div class="question" onclick="showQuestion(4, 200)">$200</div>
+        <div class="question" onclick="showQuestion(5, 200)">$200</div>
+
+        <div class="question" onclick="showQuestion(1, 300)">$300</div>
+        <div class="question" onclick="showQuestion(2, 300)">$300</div>
+        <div class="question" onclick="showQuestion(3, 300)">$300</div>
+        <div class="question" onclick="showQuestion(4, 300)">$300</div>
+        <div class="question" onclick="showQuestion(5, 300)">$300</div>
+
+        <div class="question" onclick="showQuestion(1, 400)">$400</div>
+        <div class="question" onclick="showQuestion(2, 400)">$400</div>
+        <div class="question" onclick="showQuestion(3, 400)">$400</div>
+        <div class="question" onclick="showQuestion(4, 400)">$400</div>
+        <div class="question" onclick="showQuestion(5, 400)">$400</div>
+
+        <div class="question" onclick="showQuestion(1, 500)">$500</div>
+        <div class="question" onclick="showQuestion(2, 500)">$500</div>
+        <div class="question" onclick="showQuestion(3, 500)">$500</div>
+        <div class="question" onclick="showQuestion(4, 500)">$500</div>
+        <div class="question" onclick="showQuestion(5, 500)">$500</div>
+
+        <!-- Repeat for other question values and categories -->
+    </div>
+
+    <!-- Display for Question and Answer -->
+    <div class="question-display" id="question-display"></div>
+    <div class="answer-display" id="answer-display"></div>
+
+    <script>
+        // Function to display the question based on category and value
+        function showQuestion(category, value) {
+            // You can implement the logic to fetch and display the question here
+            // For simplicity, let's just show a placeholder message
+            document.getElementById('game-board').style.display = "none";
+
+            document.getElementById('question-display').style.display = "flex";
+            document.getElementById('question-display').innerHTML = `What is the capital of France?`;
+        }
+
+        // Function to display the answer (you can customize this based on your game logic)
+        function showAnswer() {
+            // Placeholder answer
+            document.getElementById('answer-display').innerHTML = 'Answer: Paris';
+        }
+    </script>
+</body>
+</html>

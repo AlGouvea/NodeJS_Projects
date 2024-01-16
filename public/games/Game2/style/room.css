@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+
+input {
+    font-size: 30px;
+    border: none;
+    border-radius: 15px;
+    width: 300px;
+    padding: 12px 20px 12px 20px;
+    background-color: lightblue;
+}
+
+button {
+    height: 100px;
+    width: 210px;
+    border-radius: 15px;
+    border: none;
+    background-color: lightblue;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+button:hover {
+    transform: scale(1.2);
+    background-color: rgb(122, 184, 204);
+}
+
+.roomInput {
+    width: 500px;
+    height: 50px;
+    align-items: baseline;
+}
+
+a {
+    text-decoration: none;
+    font-size: 50px;
+    margin-top: 100px;
+    margin-left: 410px;
+}
+
+.roomInput button {
+    margin-left: 390px;
+    position: absolute;
+    font-weight: bold;
+    font-size: large;
+    width: 90px;
+    height: 60px;
+
+    background-color: rgb(38, 202, 38);
+}
+
+.roomInput button:hover {
+    background-color: rgb(30, 163, 30);
+}

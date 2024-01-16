@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/room.css">
+    <title>Room Creation</title>
+</head>
+<body>
+    <h1 id="title">Create or Join a Room</h1>
+    <div class="roomInput" style="display: none" id="roomInput">
+        <input type="text" id="roomCode" placeholder="Enter room code">
+        <button id="createButton" onclick="createRoom()">Create</button>
+    </div>
+    <div class="buttons" id="room_options">
+        <button onclick="startRoom(1)"><h1>Create a Room</h1></button>
+        <button style="margin-left: 50px;" onclick="startRoom(2)"><h1>Join a Room</h1></button>
+    </div>
+    <a id="back" href="/">↩️</a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        function createRoom() {
+            const roomCode = document.getElementById('roomCode').value;
+            socket.emit('createRoom', roomCode);
+        }
+
+        function joinRoom() {
+            const roomCode = document.getElementById('roomCode').value;
+            socket.emit('joinRoom', roomCode);
+        }
+
+        function startRoom(code) {
+            document.getElementById('room_options').style.display = "none";
+
+            document.getElementById('roomInput').style.display = "flex";
+
+            document.getElementById('back').href = "/games/Game2/room.html";
+
+
+            if(code == 1){
+                document.getElementById('title').innerHTML="Create a Room";
+                document.getElementById('createButton').onclick = createRoom;
+                document.getElementById('createButton').innerHTML = "Create";
+            }else {
+                document.getElementById('title').innerHTML="Join a Room";
+                document.getElementById('createButton').onclick = joinRoom;
+                document.getElementById('createButton').innerHTML = "Join";
+            }
+        }
+
+        // Handle server responses
+        socket.on('roomCreated', (roomCode) => {
+            console.log(`Room ${roomCode} created`);
+            window.location.href = `/jeopardy?roomCode=${roomCode}`;
+        });
+
+        socket.on('roomExists', (roomCode) => {
+            alert(`Room ${roomCode} already exists`);
+        });
+
+        socket.on('roomJoined', (roomCode) => {
+            console.log(`Joined room ${roomCode}`);
+            window.location.href = `/jeopardy?roomCode=${roomCode}`;
+        });
+
+        socket.on('roomNotFound', (roomCode) => {
+            alert(`Room ${roomCode} not found`);
+        });
+    </script>
+</body>
+</html>
